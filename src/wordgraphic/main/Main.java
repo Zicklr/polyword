@@ -5,7 +5,13 @@ import wordgraphic.bones.Graphe;
 import wordgraphic.bones.parsor.DataParsor;
 
 public class Main {
-
+	/**
+	 * @param String s, int max
+	 * @author Zicklr
+	 * @see Graphe
+	 * @return Graphe
+	 * @since 15-03-2013
+	 */
 	private static Graphe loadGraph(String s, int max) throws IOException {
 		DataParsor parser = new DataParsor(Paths.get(s));
 		Graphe graphe = null;

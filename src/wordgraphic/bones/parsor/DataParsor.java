@@ -19,13 +19,24 @@ public class DataParsor implements AutoCloseable {
 	private DataRobot parseur;
 	private int nbSommetsMax;
 	
-	// Methods
+	/**
+	 * @category Constructor
+	 * @param file
+	 * @throws IOException
+	 * @author Lance
+	 * @version 2013-03-21
+
+	 */
 	public DataParsor(Path file) throws IOException {
 		noeuds = new ArrayList<>();
 		s = new Scanner(file);
 		parseur = new DataRobot(noeuds);
 	}
-
+	/**
+	 * @category method
+	 * @return
+	 * @throws IOException
+	 */
 	public Graphe parse() throws IOException {
 		return parseEverything(-1);
 	}
@@ -78,7 +89,12 @@ public class DataParsor implements AutoCloseable {
 	}
 
 	
-		 
+	/** That function makes parsing of vertex's graph passed 
+	 * and keep up an array of vertex which done success
+	 * @see interface Handler
+	 * @author Lance	  
+	 * @return {@link ArrayList} Sommet
+	 */
 	private ArrayList<Sommet> parseSommets() {
 		ArrayList<Sommet> somParses = new ArrayList<>();
 		while(s.hasNext()) {
@@ -98,10 +114,8 @@ public class DataParsor implements AutoCloseable {
 	/*** Chargement des aretes
 	 * Notre graphe etant orienté et pondéré on se doit d'ajouter pour chaque arete deux aretes selon
 	 * le sens de A vers B et de B vers A et bien tester que nos sommets de départ et d'arrivée sont bien différents 
-	 *  
 	 *  ****/
 	private int parseAretes(Graphe a){
-		//int i = 1;
 		int poids_max = 0;
 		while(s.hasNext()) {
 			String line = s.nextLine();
@@ -112,12 +126,7 @@ public class DataParsor implements AutoCloseable {
 				if(newAretes[0]!= null && (newAretes[0].getDestination()!=null && newAretes[0].getSource()!=null)) {
 					a.addArete(newAretes[0]);
 					a.addArete(newAretes[1]);
-					//System.out.println(i);
-					//i++;
 					poids_max+=2;
-				}
-				else {
-					//System.out.println("pb parsing");
 				}
 			}
 		}

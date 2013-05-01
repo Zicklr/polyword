@@ -8,6 +8,7 @@ import java.util.HashSet;
  *
  */
 public class Sommet {
+	
 	/** Les mots sont stockés dans les sommets */
     private final String mot;
     private final int poids;
